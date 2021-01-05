@@ -8,10 +8,10 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.devsuperior</groupId>
-	<artifactId>dsveliver</artifactId>
+	<groupId>com.example.devsuperior</groupId>
+	<artifactId>dsdeliver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dsveliver</name>
+	<name>dsdeliver</name>
 	<description>Projeto Semana DevSuperior 2.0</description>
 
 	<properties>
