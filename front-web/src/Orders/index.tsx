@@ -15,7 +15,6 @@ function Orders() {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
     const [orderLocation, setOrderLocation] = useState<OrderLocationData>();
-    console.log(products)
 
     const totalPrice = selectedProducts.reduce((sum, item) => {
         return sum + item.price;
@@ -47,16 +46,24 @@ function Orders() {
             ...orderLocation!,
             products: productsIds
         }
-        console.log(orderLocation);
-
-        saveOrder(payload)
+        if(payload.address===undefined){
+            toast.warning('Selecione um endereço e tente novamente');
+        }
+        else if(payload.products.length===0){
+            toast.warning('Selecione ao menos um produto e tente novamente');
+        }
+        else{
+            saveOrder(payload)
             .then((response) => {
                 toast.error(`Pedido enviado com sucesso! Nº ${response.data.id}`);
                 setSelectedProducts([]);
-        })
-            .catch(() => {
-                toast.warning('Erro ao enviar pedido');
             })
+            .catch((error) => {
+                toast.warning('Erro ao enviar pedido');
+                
+            })
+        }
+
     }
 
 
